@@ -13,7 +13,7 @@ build/dialog.bin.o: build/dialog
 build/library.o: library.c library.h
 	$(CC) $(COPTS) -o build/library.o -c library.c -fPIC
 build/libStandaloneFileBrowser.so: build/dialog.bin.o build/library.o
-	$(CC) $(COPTS) -o build/libStandaloneFileBrowser.so build/library.o build/dialog.bin.o -shared
+	$(CC) $(COPTS) -o build/libStandaloneFileBrowser.so build/library.o build/dialog.bin.o -shared -z noexecstack
 build/main: build/libStandaloneFileBrowser.so main.c library.h
 	$(CC) $(COPTS) -o build/main main.c build/libStandaloneFileBrowser.so
 
